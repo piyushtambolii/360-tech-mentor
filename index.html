@@ -20,10 +20,8 @@
     <header class="hero-bg text-white pt-16 pb-20 shadow-xl">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <!-- Logo/Branding Area -->
-            <div class="flex flex-col items-center mb-10">
-                <!-- Using placeholder for logo, replace with actual image/SVG -->
-                <img src="https://placehold.co/100x40/f97316/ffffff?text=360+LOGO" alt="360 Tech Mentor Logo" class="h-10 w-auto rounded-lg mb-4">
-                <p class="text-xl font-bold tracking-widest uppercase">360 Tech Mentor</p>
+            <div class="flex flex-col items-center mb-3">
+                <img src="/Final Logo Techmentor.png" alt="360 Tech Mentor Logo" class="logo-img rounded-lg mb-0 hover:scale-105 transition-transform duration-300">
             </div>
 
             <div class="max-w-3xl mx-auto">
@@ -36,14 +34,9 @@
             </div>
             
             <!-- Primary Call to Action Button - Scrolls to Form -->
-            <a href="#consultation-form" class="mt-8 inline-block px-6 py-3 sm:px-12 sm:py-4 text-base sm:text-lg font-semibold rounded-full bg-secondary-color hover:bg-orange-600 transition duration-300 transform hover:scale-105 shadow-lg">
+            <a href="#consultation-form" class="mt-6 inline-block px-6 py-3 sm:px-12 sm:py-4 text-base sm:text-lg font-semibold rounded-full bg-secondary-color hover:bg-orange-600 transition duration-300 transform hover:scale-105 shadow-lg">
                 Fill Survey Form Now
             </a>
-
-            <!-- Debug info (hidden in production) -->
-            <div class="mt-4 text-xs text-gray-400">
-                Auth Status: <span id="auth-status">Initializing...</span> | User ID: <span id="user-id-display">...</span>
-            </div>
         </div>
     </header>
 
@@ -116,32 +109,86 @@
                     
                     <!-- Full Name -->
                     <div>
-                        <label for="fullName" class="block text-lg font-medium text-gray-700 mb-2">Full Name <span class="text-red-500">*</span></label>
-                        <input type="text" id="fullName" name="fullName" placeholder="John Doe" class="form-input" required>
+                        <label for="fullName" class="block text-lg font-medium text-gray-700 mb-2">Full Name (पूर्ण नाव) <span class="text-red-500">*</span></label>
+                        <input type="text" id="fullName" name="fullName" placeholder="Enter Name" class="form-input" required>
                     </div>
 
                     <!-- Email Address -->
                     <div>
-                        <label for="email" class="block text-lg font-medium text-gray-700 mb-2">Email Address <span class="text-red-500">*</span></label>
-                        <input type="email" id="email" name="email" placeholder="john.doe@example.com" class="form-input" required>
+                        <label for="email" class="block text-lg font-medium text-gray-700 mb-2">Email Address (ई-मेल) <span class="text-red-500">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="Email" class="form-input" required>
                     </div>
 
                     <!-- Mobile Number -->
                     <div>
-                        <label for="mobile" class="block text-lg font-medium text-gray-700 mb-2">Mobile Number <span class="text-red-500">*</span></label>
+                        <label for="mobile" class="block text-lg font-medium text-gray-700 mb-2">Mobile Number (मोबाईल क्रमांक) <span class="text-red-500">*</span></label>
                         <input type="tel" id="mobile" name="mobile" placeholder="+91 98765 43210" class="form-input" required pattern="[0-9]{10,15}">
                     </div>
 
                     <!-- Age -->
                     <div>
-                        <label for="age" class="block text-lg font-medium text-gray-700 mb-2">Age <span class="text-red-500">*</span></label>
+                        <label for="age" class="block text-lg font-medium text-gray-700 mb-2">Age (वय) <span class="text-red-500">*</span></label>
                         <input type="number" id="age" name="age" placeholder="25" class="form-input" required min="18" max="99">
                     </div>
 
                     <!-- Education / Qualification -->
                     <div>
-                        <label for="qualification" class="block text-lg font-medium text-gray-700 mb-2">Education / Qualification <span class="text-red-500">*</span></label>
+                        <label for="qualification" class="block text-lg font-medium text-gray-700 mb-2">Education / Qualification (शिक्षण / पात्रता) <span class="text-red-500">*</span></label>
                         <input type="text" id="qualification" name="qualification" placeholder="B.Tech, MBA, etc." class="form-input" required>
+                    </div>
+
+                    <!-- Current Status -->
+                    <div>
+                        <label for="currentStatus" class="block text-lg font-medium text-gray-700 mb-2">What are you currently doing? (सध्या आपण काय करत आहात?) <span class="text-red-500">*</span></label>
+                        <textarea id="currentStatus" name="currentStatus" placeholder="e.g., Studying, Working, Searching for a Job, Upskilling, etc." class="form-input min-h-[100px]" required></textarea>
+
+                    </div>
+
+                    <!-- Career Goals -->
+                    <div>
+                        <label for="careerGoals" class="block text-lg font-medium text-gray-700 mb-2">Learning & Growth <br> What are your short-term and long-term career goals? (आपले अल्पकालीन आणि दीर्घकालीन करिअर उद्दिष्टे कोणती आहेत?) <span class="text-red-500">*</span></label>
+                        <textarea id="careerGoals" name="careerGoals" placeholder="e.g., Become a software engineer, switch to data analytics, start freelancing, etc." class="form-input min-h-[100px]" required></textarea>
+                    </div>
+
+                    <!-- Technology Interests -->
+                    <!-- <div>
+                        <label for="techInterests" class="block text-lg font-medium text-gray-700 mb-2">What IT domains or technologies are you most interested in learning? <span class="text-red-500">*</span></label>
+                        <textarea id="techInterests" name="techInterests" placeholder="List the technologies or domains you're interested in" class="form-input" required></textarea>
+                    </div> -->
+
+                    <!-- Career Challenges -->
+                    <div>
+                        <label for="challenges" class="block text-lg font-medium text-gray-700 mb-2">Do you have any specific challenges or concerns in achieving your career goals? (आपल्या करिअर उद्दिष्टांपर्यंत पोहोचण्यात काही अडचणी किंवा चिंता आहेत का?) <span class="text-red-500">*</span></label>
+                        <textarea id="challenges" name="challenges" placeholder="e.g., lack of guidance, financial issues, unclear career direction, etc." class="form-input" required></textarea>
+                    </div>
+
+                    <!-- Motivation -->
+                    <div>
+                        <label for="motivation" class="block text-lg font-medium text-gray-700 mb-2">What motivated you to fill this form? (हा फॉर्म भरायला तुम्हाला काय प्रेरणा मिळाली?) <span class="text-red-500">*</span></label>
+                        <textarea id="motivation" name="motivation" placeholder="e.g., Interested in webinar, seeking career guidance, exploring job opportunities, etc." class="form-input" required></textarea>
+                    </div>
+
+                    <!-- Expected Package -->
+                    <div>
+                        <label for="expectedPackage" class="block text-lg font-medium text-gray-700 mb-2">Expected Package / Earnings (अपेक्षित पगार / उत्पन्न) <br> What salary range or income level are you aiming for in the next 2–3 years? <span class="text-red-500">*</span></label>
+                        <input type="expectedPackage" id="expectedPackage" name="expectedPackage" placeholder="3 LPA" class="form-input" required min="18" max="10">
+                    </div>
+
+                    <!-- Consultation Type -->
+                    <div>
+                        <label for="consultationType" class="block text-lg font-medium text-gray-700 mb-2">Consultation Type (आमच्या सहाय्याचे प्रकार) <span class="text-red-500">*</span></label>
+                        <select id="consultationType" name="consultationType" class="form-input" required>
+                            <option value="">Select consultation type</option>
+                            <option value="webinar">Webinar (₹199)</option>
+                            <option value="oncall">On Call (₹499)</option>
+                            <option value="personal">Personal Sessions (Custom Quote)</option>
+                        </select>
+                    </div>
+
+                    <!-- Specific Requirement -->
+                    <div>
+                        <label for="specificrequirement" class="block text-lg font-medium text-gray-700 mb-2">Give your specific requirement (आपली विशिष्ट गरज लिहा) <span class="text-red-500">*</span></label>
+                        <input type="specificrequirement" id="specificrequirement" name="specificrequirement" placeholder="(उदा. करिअर मार्गदर्शन, नोकरी शोध मदत, कोर्स सल्ला, रेझ्युमे सुधारणा इ.)" class="form-input" required min="18" max="100">
                     </div>
 
                     <!-- Submit Button -->
@@ -149,10 +196,144 @@
                         <button type="submit" id="submit-btn" class="w-full mt-6 px-6 py-3 text-lg font-bold rounded-lg bg-primary-color text-white hover:bg-blue-800 transition duration-300 transform hover:scale-105 shadow-xl">
                             Submit & Unlock My Future
                         </button>
+                        <p class="text-center mt-4 text-gray-600">
+                            Having trouble? 
+                            <a href="https://forms.google.com/your-backup-form-url" target="_blank" class="text-secondary-color hover:underline">
+                                Fill out our Google Form instead
+                            </a>
+                        </p>
                     </div>
                 </form>
             </div>
             
+        </div>
+    </section>
+
+    <!-- Core Team Section -->
+    <section id="core-team" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-extrabold text-gray-900 text-center mb-12 animate-fade-in">Meet Our Expert Mentors</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <!-- Mentor 1 -->
+                <div class="bg-white p-6 rounded-xl card-shadow hover:shadow-2xl transition duration-300 animate-slide-up">
+                    <div class="text-center">
+                        <img src="https://imgv3.fotor.com/images/ai-headshot-generator/AI-generated-LinkedIn-profile-picture--of-a-smiling-male-in-the-light-brown-business-suit-with-his-back-to-the-window-from-Fotor.jpg" alt="Mahesh Joshi" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover hover:scale-105 transition-transform duration-300">
+                        <h3 class="text-xl font-bold text-gray-900">Mahesh Joshi</h3>
+                        <p class="text-secondary-color">Sr Technical Lead</p>
+                        <p class="mt-2 text-gray-600">10+ years in Software Development</p>
+                        <div class="flex justify-center space-x-4 mt-4">
+                            <a href="https://linkedin.com/in/johndoe" target="_blank" class="text-blue-600 hover:text-blue-800">
+                                <i data-lucide="linkedin" class="w-5 h-5"></i>
+                            </a>
+                            <a href="https://twitter.com/johndoe" target="_blank" class="text-blue-400 hover:text-blue-600">
+                                <i data-lucide="twitter" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mentor 2 -->
+                <div class="bg-white p-6 rounded-xl card-shadow hover:shadow-2xl transition duration-300 animate-slide-up" style="animation-delay: 200ms;">
+                    <div class="text-center">
+                        <img src="https://imgv3.fotor.com/images/ai-headshot-generator/AI-generated-LinkedIn-profile-picture--of-a-smiling-male-in-the-light-brown-business-suit-with-his-back-to-the-window-from-Fotor.jpg" alt="Narendra Tamboli" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover hover:scale-105 transition-transform duration-300">
+                        <h3 class="text-xl font-bold text-gray-900">Narendra Tamboli</h3>
+                        <p class="text-secondary-color">Salesforce Administrator</p>
+                        <p class="mt-2 text-gray-600">8+ years Salesforce</p>
+                        <div class="flex justify-center space-x-4 mt-4">
+                            <a href="https://linkedin.com/in/janesmith" target="_blank" class="text-blue-600 hover:text-blue-800">
+                                <i data-lucide="linkedin" class="w-5 h-5"></i>
+                            </a>
+                            <a href="https://github.com/janesmith" target="_blank" class="text-gray-800 hover:text-gray-600">
+                                <i data-lucide="github" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mentor 3 -->
+                <div class="bg-white p-6 rounded-xl card-shadow hover:shadow-2xl transition duration-300 animate-slide-up" style="animation-delay: 400ms;">
+                    <div class="text-center">
+                        <img src="https://imgv3.fotor.com/images/ai-headshot-generator/AI-generated-LinkedIn-profile-picture--of-a-smiling-male-in-the-light-brown-business-suit-with-his-back-to-the-window-from-Fotor.jpg" alt="Suraj Chavan" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover hover:scale-105 transition-transform duration-300">
+                        <h3 class="text-xl font-bold text-gray-900">Suraj Chavan</h3>
+                        <p class="text-secondary-color">Sr QA Analyst</p>
+                        <p class="mt-2 text-gray-600">8+ years in Automation Testing</p>
+                        <div class="flex justify-center space-x-4 mt-4">
+                            <a href="https://linkedin.com/in/mikejohnson" target="_blank" class="text-blue-600 hover:text-blue-800">
+                                <i data-lucide="linkedin" class="w-5 h-5"></i>
+                            </a>
+                            <a href="https://medium.com/@mikejohnson" target="_blank" class="text-gray-800 hover:text-gray-600">
+                                <i data-lucide="edit-3" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mentor 4 -->
+                <div class="bg-white p-6 rounded-xl card-shadow hover:shadow-2xl transition duration-300 animate-slide-up" style="animation-delay: 600ms;">
+                    <div class="text-center">
+                        <img src="https://imgv3.fotor.com/images/ai-headshot-generator/AI-generated-LinkedIn-profile-picture--of-a-smiling-male-in-the-light-brown-business-suit-with-his-back-to-the-window-from-Fotor.jpg" alt="Jayesh Tamboli" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover hover:scale-105 transition-transform duration-300">
+                        <h3 class="text-xl font-bold text-gray-900">Jayesh Tamboli</h3>
+                        <p class="text-secondary-color">Sr Video Editor</p>
+                        <p class="mt-2 text-gray-600">8+ years in Video Editing</p>
+                        <div class="flex justify-center space-x-4 mt-4">
+                            <a href="https://linkedin.com/in/sarahlee" target="_blank" class="text-blue-600 hover:text-blue-800">
+                                <i data-lucide="linkedin" class="w-5 h-5"></i>
+                            </a>
+                            <a href="https://instagram.com/sarahlee.tech" target="_blank" class="text-pink-600 hover:text-pink-800">
+                                <i data-lucide="instagram" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mentor 5 -->
+                <div class="bg-white p-6 rounded-xl card-shadow hover:shadow-2xl transition duration-300 animate-slide-up" style="animation-delay: 800ms;">
+                    <div class="text-center">
+                        <img src="https://imgv3.fotor.com/images/ai-headshot-generator/AI-generated-LinkedIn-profile-picture--of-a-smiling-male-in-the-light-brown-business-suit-with-his-back-to-the-window-from-Fotor.jpg" alt="David Chen" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover hover:scale-105 transition-transform duration-300">
+                        <h3 class="text-xl font-bold text-gray-900">David Chen</h3>
+                        <p class="text-secondary-color">Security Expert</p>
+                        <p class="mt-2 text-gray-600">9+ years in Cybersecurity</p>
+                        <div class="flex justify-center space-x-4 mt-4">
+                            <a href="https://linkedin.com/in/davidchen" target="_blank" class="text-blue-600 hover:text-blue-800">
+                                <i data-lucide="linkedin" class="w-5 h-5"></i>
+                            </a>
+                            <a href="https://github.com/davidchen" target="_blank" class="text-gray-800 hover:text-gray-600">
+                                <i data-lucide="github" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Group Section -->
+    <section id="whatsapp" class="py-16 bg-accent-color">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-primary-color mb-6">Join Our Arratai Community</h2>
+            <p class="text-xl text-gray-700 mb-8">Get instant job updates and connect with fellow tech enthusiasts</p>
+            <a href="https://chat.arattai.in/groups/z43545f313238383631373235303437323632313138335f32303031393031373639322d47437c3031303131353033303034323137363134353134393034323130" target="_blank" class="inline-flex items-center px-8 py-4 bg-green-500 text-white rounded-full hover:bg-green-600 transition duration-300">
+                <i data-lucide="message-circle" class="w-6 h-6 mr-2"></i>
+                Join Arratai Group
+            </a>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section id="social-media" class="py-16 bg-gray-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8">Connect With Us</h2>
+            <div class="flex justify-center space-x-6">
+                <a href="#" class="text-gray-600 hover:text-primary-color transition-colors">
+                    <i data-lucide="linkedin" class="w-8 h-8"></i>
+                </a>
+                <a href="#" class="text-gray-600 hover:text-primary-color transition-colors">
+                    <i data-lucide="instagram" class="w-8 h-8"></i>
+                </a>
+                <a href="#" class="text-gray-600 hover:text-primary-color transition-colors">
+                    <i data-lucide="twitter" class="w-8 h-8"></i>
+                </a>
+            </div>
         </div>
     </section>
 

@@ -177,13 +177,35 @@ window.handleFormSubmit = async function(event) {
     }
 }
 
-// Initialize Lucide icons when DOM is ready (guarded)
+// Handle service card clicks to auto-fill form
+function setupServiceCardListeners() {
+    const cards = document.querySelectorAll('.card-shadow');
+    cards.forEach(card => {
+        card.addEventListener('click', () => {
+            const title = card.querySelector('h3').textContent.toLowerCase();
+            const select = document.getElementById('consultationType');
+            if (select) {
+                let value = '';
+                if (title.includes('webinar')) value = 'webinar';
+                else if (title.includes('on call')) value = 'oncall';
+                else if (title.includes('personal')) value = 'personal';
+                
+                select.value = value;
+                // Smooth scroll to form
+                document.getElementById('consultation-form').scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+}
+
+// Initialize Lucide icons and setup listeners when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     try {
         if (window.lucide && typeof lucide.createIcons === 'function') {
             lucide.createIcons();
         }
+        setupServiceCardListeners();
     } catch (e) {
-        console.warn('lucide not ready', e);
+        console.warn('initialization error', e);
     }
 });

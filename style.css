@@ -10,11 +10,11 @@ body {
 /* Custom gradient for the hero section, inspired by the image */
 .hero-bg {
     position: relative;
-    /* background-color: ffffff; */
-    background-image: linear-gradient(180deg, rgba(30, 58, 138, 0.92), rgba(20, 40, 90, 0.7)), url('https://placehold.co/1600x900/1e3a8a/ffffff?text=Professional+Background');
+    background-image: linear-gradient(180deg, rgba(30, 58, 138, 0.92), rgba(20, 40, 90, 0.7)), url('./assets/final-background.png');
     background-size: cover;
     background-position: center;
     overflow: hidden;
+    min-height: 100vh;
 }
 
 /* Replace Tailwind-only @apply with equivalent plain CSS so this works in-browser */
@@ -37,6 +37,18 @@ body {
 /* Form visual polish */
 .form-input::placeholder { color: #9ca3af; }
 .form-input { box-shadow: 0 6px 18px rgba(13, 18, 31, 0.04); }
+
+/* Textarea styles */
+textarea.form-input {
+    min-height: 80px;
+    resize: vertical;
+    line-height: 1.5;
+    transition: min-height 0.3s ease;
+}
+
+textarea.form-input:focus {
+    min-height: 100px;
+}
 
 /* Hero content wrapper to add spacing and subtle entrance */
 .hero-content { padding: 3rem 1rem; }
@@ -91,7 +103,92 @@ footer { background: linear-gradient(180deg,#0f172a, #111827); }
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
+/* Animations */
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.animate-slide-up {
+    opacity: 0;
+    animation: slideUp 0.6s ease forwards;
+}
+
+.animate-fade-in {
+    opacity: 0;
+    animation: fadeIn 0.8s ease forwards;
+}
+
+/* Form enhancements */
+.form-input, select.form-input {
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.form-input:hover, select.form-input:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(13, 18, 31, 0.08);
+}
+
+/* Service card enhancements */
+.card-shadow {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-shadow:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 30px 60px rgba(2,6,23,0.15);
+}
+
 /* Small responsive tweaks */
 @media (max-width: 640px) {
-    .hero-bg { background-position: center top; }
+    .hero-bg { 
+        background-position: center top;
+        min-height: 80vh;
+    }
+    
+    /* Core team responsive */
+    #core-team .grid {
+        gap: 2rem;
+    }
+    
+    /* WhatsApp section responsive */
+    #whatsapp h2 {
+        font-size: 1.875rem;
+    }
+    #whatsapp p {
+        font-size: 1.125rem;
+    }
+    
+    /* Social media responsive */
+    #social-media .space-x-6 {
+        gap: 1.5rem;
+    }
+    #social-media .w-8 {
+        width: 2rem;
+        height: 2rem;
+    }
+
+    /* Responsive logo image */
+    .logo-img {
+        width: 96px;
+        height: 96px;
+    }
+}
+
+/* Desktop logo image */
+.logo-img {
+    width: 148px;
+    height: 148px;
+}
+@media (min-width: 768px) {
+    .logo-img {
+        width: 180px;
+        height: 180px;
+    }
 }
