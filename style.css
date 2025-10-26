@@ -81,7 +81,7 @@ footer { background: linear-gradient(180deg,#0f172a, #111827); }
 
 /* Small responsive tweaks */
 @media (max-width: 640px) {
-    .hero-bg { background-position: center top; padding-top: 4rem; }
+    .hero-bg { background-position: center top; padding-top: 1rem; }
     .hero-content { padding: 2rem 1rem; }
 }
 
