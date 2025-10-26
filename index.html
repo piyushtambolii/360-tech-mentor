@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>360 Tech Mentor - Unlock Your Future</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Load Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- External JS (moved to bottom) -->
+
+    <!-- Header & Hero Section -->
+    <header class="hero-bg text-white pt-16 pb-20 shadow-xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <!-- Logo/Branding Area -->
+            <div class="flex flex-col items-center mb-10">
+                <!-- Using placeholder for logo, replace with actual image/SVG -->
+                <img src="https://placehold.co/100x40/f97316/ffffff?text=360+LOGO" alt="360 Tech Mentor Logo" class="h-10 w-auto rounded-lg mb-4">
+                <p class="text-xl font-bold tracking-widest uppercase">360 Tech Mentor</p>
+            </div>
+
+            <div class="max-w-3xl mx-auto">
+                <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tight leading-tight mb-4 text-secondary-color">
+                    UNLOCK YOUR FUTURE
+                </h1>
+                <p class="mt-3 text-base sm:text-lg md:text-xl font-light text-gray-200 sm:mt-5">
+                    Build Your Own Career Path: Earnings & Learning with New Trends.
+                </p>
+            </div>
+            
+            <!-- Primary Call to Action Button - Scrolls to Form -->
+            <a href="#consultation-form" class="mt-8 inline-block px-6 py-3 sm:px-12 sm:py-4 text-base sm:text-lg font-semibold rounded-full bg-secondary-color hover:bg-orange-600 transition duration-300 transform hover:scale-105 shadow-lg">
+                Fill Survey Form Now
+            </a>
+
+            <!-- Debug info (hidden in production) -->
+            <div class="mt-4 text-xs text-gray-400">
+                Auth Status: <span id="auth-status">Initializing...</span> | User ID: <span id="user-id-display">...</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-extrabold text-gray-900 text-center mb-12">
+                Our Pathways to Success
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Service Card 1: Webinar -->
+                <div class="bg-white p-6 rounded-xl card-shadow border-t-8 border-secondary-color hover:shadow-2xl transition duration-300">
+                    <div class="text-center">
+                        <i data-lucide="monitor" class="w-10 h-10 sm:w-12 sm:h-12 text-secondary-color mx-auto mb-4"></i>
+                        <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-2">WEBINAR</h3>
+                        <p class="text-sm sm:text-base text-gray-500 mb-4">In-depth group sessions on trending topics.</p>
+                        <div class="inline-block px-3 py-1.5 text-lg sm:text-xl font-extrabold rounded-lg bg-secondary-color text-white">
+                            Rs. 199/-
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service Card 2: On Call -->
+                <div class="bg-white p-6 rounded-xl card-shadow border-t-8 border-primary-color hover:shadow-2xl transition duration-300">
+                    <div class="text-center">
+                        <i data-lucide="phone" class="w-10 h-10 sm:w-12 sm:h-12 text-primary-color mx-auto mb-4"></i>
+                        <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-2">ON CALL</h3>
+                        <p class="text-sm sm:text-base text-gray-500 mb-4">Direct 1-on-1 discussion for quick advice.</p>
+                        <div class="inline-block px-3 py-1.5 text-lg sm:text-xl font-extrabold rounded-lg bg-primary-color text-white">
+                            Rs. 499/-
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service Card 3: Personal Sessions -->
+                <div class="bg-white p-6 rounded-xl card-shadow border-t-8 border-accent-color hover:shadow-2xl transition duration-300">
+                    <div class="text-center">
+                        <i data-lucide="briefcase" class="w-10 h-10 sm:w-12 sm:h-12 text-green-700 mx-auto mb-4"></i>
+                        <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-2">PERSONAL SESSIONS</h3>
+                        <p class="text-sm sm:text-base text-gray-500 mb-4">Tailored career roadmap and dedicated guidance.</p>
+                        <div class="inline-block px-3 py-1.5 text-lg sm:text-xl font-extrabold rounded-lg bg-gray-200 text-gray-800">
+                            Custom Quote
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Consultation Form Section -->
+    <section id="consultation-form" class="py-20 bg-gray-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-primary-color mb-3">
+                    Start Your Journey
+                </h2>
+                <p class="text-xl text-gray-600">
+                    Fill out the form below to help us understand your needs and unlock your tailored career path.
+                </p>
+            </div>
+
+            <!-- Form Container -->
+            <div id="form-container" class="bg-white p-6 md:p-12 rounded-xl shadow-2xl transition duration-500 opacity-50 pointer-events-none">
+                <p class="text-center text-red-500 mb-4 font-semibold text-lg" id="status-message"></p>
+
+                <form onsubmit="handleFormSubmit(event)" class="space-y-6">
+                    
+                    <!-- Full Name -->
+                    <div>
+                        <label for="fullName" class="block text-lg font-medium text-gray-700 mb-2">Full Name <span class="text-red-500">*</span></label>
+                        <input type="text" id="fullName" name="fullName" placeholder="John Doe" class="form-input" required>
+                    </div>
+
+                    <!-- Email Address -->
+                    <div>
+                        <label for="email" class="block text-lg font-medium text-gray-700 mb-2">Email Address <span class="text-red-500">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="john.doe@example.com" class="form-input" required>
+                    </div>
+
+                    <!-- Mobile Number -->
+                    <div>
+                        <label for="mobile" class="block text-lg font-medium text-gray-700 mb-2">Mobile Number <span class="text-red-500">*</span></label>
+                        <input type="tel" id="mobile" name="mobile" placeholder="+91 98765 43210" class="form-input" required pattern="[0-9]{10,15}">
+                    </div>
+
+                    <!-- Age -->
+                    <div>
+                        <label for="age" class="block text-lg font-medium text-gray-700 mb-2">Age <span class="text-red-500">*</span></label>
+                        <input type="number" id="age" name="age" placeholder="25" class="form-input" required min="18" max="99">
+                    </div>
+
+                    <!-- Education / Qualification -->
+                    <div>
+                        <label for="qualification" class="block text-lg font-medium text-gray-700 mb-2">Education / Qualification <span class="text-red-500">*</span></label>
+                        <input type="text" id="qualification" name="qualification" placeholder="B.Tech, MBA, etc." class="form-input" required>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div>
+                        <button type="submit" id="submit-btn" class="w-full mt-6 px-6 py-3 text-lg font-bold rounded-lg bg-primary-color text-white hover:bg-blue-800 transition duration-300 transform hover:scale-105 shadow-xl">
+                            Submit & Unlock My Future
+                        </button>
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p>&copy; 2025 360 Tech Mentor. All rights reserved. | Empowering Careers.</p>
+        </div>
+    </footer>
+
+    <!-- Module script -->
+    <script type="module" src="script.js"></script>
+</body>
+</html>
