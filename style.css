@@ -81,7 +81,7 @@ footer { background: linear-gradient(180deg,#0f172a, #111827); }
 
 /* Small responsive tweaks */
 @media (max-width: 640px) {
-    .hero-bg { background-position: center top; padding-top: 1rem; }
+    .hero-bg { background-position: center top; padding-top: 0.5rem; }
     .hero-content { padding: 2rem 1rem; }
 }
 
@@ -176,8 +176,8 @@ footer { background: linear-gradient(180deg,#0f172a, #111827); }
 
     /* Responsive logo image */
     .logo-img {
-        width: 96px;
-        height: 96px;
+        width: 99px;
+        height: 99px;
     }
 }
 
