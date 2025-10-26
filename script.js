@@ -83,69 +83,75 @@ try {
 window.handleFormSubmit = async function(event) {
     event.preventDefault();
 
-    const form = event.target;
+    // 🎯 FIX 1: Define the form element
+    const form = event.target; 
+    
+    // Ensure you have elements for these messages in your HTML (e.g., <p id="status-message">)
     const statusMessage = document.getElementById('status-message');
     const submitBtn = document.getElementById('submit-btn');
 
-    if (!db || !userId) {
-        statusMessage.textContent = 'Database not ready. Please wait a moment.';
-        statusMessage.classList.remove('hidden', 'text-green-600', 'text-red-600');
-        statusMessage.classList.add('text-yellow-600');
-        return;
-    }
-
-    // Simple validation
-    const fields = ['fullName', 'email', 'mobile', 'age', 'qualification'];
-    let isValid = true;
-    fields.forEach(field => {
-        const input = form[field];
-        if (!input.value.trim()) {
-            input.classList.add('border-red-500');
-            isValid = false;
-        } else {
-            input.classList.remove('border-red-500');
-        }
-    });
-
-    if (!isValid) {
-        statusMessage.textContent = 'Please fill in all required fields.';
+    if (!form.checkValidity()) {
+        // Let the browser handle standard HTML5 validation errors (e.g., required fields)
+        statusMessage.textContent = 'Please fill in all required fields correctly.';
         statusMessage.classList.remove('hidden', 'text-green-600');
         statusMessage.classList.add('text-red-600');
         return;
     }
+    
+    if (!db || !userId) {
+        statusMessage.textContent = 'Database not ready. Please wait a moment.';
+        statusMessage.classList.remove('hidden', 'text-green-600', 'text-red-600');
+        statusMessage.classList.add('text-yellow-600');
+        // Continue submission if it's ONLY for the sheet, but warn the user.
+        console.warn('Firebase DB or User ID not ready, proceeding to Sheet submission only.');
+    }
 
-    const formData = {
+    // Prepare the payload from ALL form fields using their 'name' attributes
+    const payload = {
         fullName: form.fullName.value,
         email: form.email.value,
         mobile: form.mobile.value,
         age: parseInt(form.age.value),
         qualification: form.qualification.value,
+        currentStatus: form.currentStatus.value,
+        careerGoals: form.careerGoals.value,
+        challenges: form.challenges.value,
+        motivation: form.motivation.value,
+        expectedPackage: form.expectedPackage.value,
+        consultationType: form.consultationType.value,
+        specificrequirement: form.specificrequirement.value,
+        
+        // Add metadata
         submissionDate: new Date().toISOString(),
-        // Store the userId in the document for query purposes
-        submittedBy: userId,
+        submittedBy: userId || 'anonymous',
     };
+
+    // --- CORE FIX: Convert JSON object to URLSearchParams for Apps Script ---
+    const urlParams = new URLSearchParams();
+    for (const key in payload) {
+        urlParams.append(key, payload[key]);
+    }
+
+    const SHEET_URL = 'https://script.google.com/macros/s/AKfycbydS70WOjFhI9qb-q-65lyfMqsyo4niYq2GTkpcDQxafgWpZC8IYuuHiBtWUgvl-Ww5/exec';
 
     submitBtn.disabled = true;
     submitBtn.textContent = 'Submitting...';
 
     try {
-        // First: send to Google Sheets Web App (Apps Script)
-        const SHEET_URL = 'https://script.google.com/macros/s/AKfycbz9q9q_XnZjKK-Alh9ziIHd0dMpULhvWnepSbb1GFU_LFawewnwDM3ks6A7EkfFbOfz/exec';
-
-        // Ensure we include a fallback submittedBy, useful for sheet and Firestore
-        const payload = Object.assign({}, formData, { submittedBy: userId || 'anonymous' });
-
         const sheetResp = await fetch(SHEET_URL, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload),
+            // Correct Content-Type for Apps Script's e.parameter to work
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, 
+            body: urlParams.toString(),
         });
+
+        // 💡 IMPORTANT: Check the Google Apps Script logs for errors (View -> Logs)
 
         let sheetResult = null;
         try { sheetResult = await sheetResp.json(); } catch (e) { sheetResult = { status: sheetResp.status, text: sheetResp.statusText }; }
 
-        if (!sheetResp.ok) {
-            console.warn('Sheet response not OK', sheetResult);
+        if (!sheetResp.ok || sheetResult.result === 'error') {
+            console.error('Sheet response not OK or returned error:', sheetResult);
             throw new Error(sheetResult.error || 'Google Sheets submission failed');
         }
 
@@ -161,14 +167,14 @@ window.handleFormSubmit = async function(event) {
         }
 
         // Success UI
-        statusMessage.textContent = (sheetResult && sheetResult.message) ? sheetResult.message : 'Success! Your form has been submitted. We will contact you shortly.';
+        statusMessage.textContent = 'Success! Your form has been submitted.';
         statusMessage.classList.remove('hidden', 'text-red-600');
         statusMessage.classList.add('text-green-600');
-        form.reset(); // Clear form on success
+        form.reset(); 
 
     } catch (e) {
         console.error("Submission error:", e);
-        statusMessage.textContent = "Submission failed. Please try again.";
+        statusMessage.textContent = "Submission failed. Please try again. (Check browser console for details)";
         statusMessage.classList.remove('hidden', 'text-green-600');
         statusMessage.classList.add('text-red-600');
     } finally {
