@@ -167,11 +167,24 @@ window.handleFormSubmit = async function(event) {
             }
         }
 
-        // Success UI
-        statusMessage.textContent = 'Success! Your form has been submitted.';
-        statusMessage.classList.remove('hidden', 'text-red-600');
-        statusMessage.classList.add('text-green-600');
-        form.reset(); 
+        // 🎯 NEW Success UI Block: Show the Modal
+        const successModal = document.getElementById('success-modal');
+        
+        if (successModal) {
+            // Hide the status message element since we're using the modal
+            statusMessage.classList.add('hidden'); 
+            
+            // Show the modal
+            successModal.classList.remove('hidden');
+            successModal.classList.add('flex'); // Use flex to center the content
+        } else {
+            // Fallback for success in case modal is missing
+            statusMessage.textContent = 'Success! Your form has been submitted.';
+            statusMessage.classList.remove('hidden', 'text-red-600');
+            statusMessage.classList.add('text-green-600');
+        }
+
+        form.reset(); // Clear form on success
 
     } catch (e) {
         console.error("Submission error:", e);
@@ -183,6 +196,22 @@ window.handleFormSubmit = async function(event) {
         submitBtn.textContent = 'Submit & Unlock My Future';
     }
 }
+
+// --- Modal Close Logic ---
+document.addEventListener('DOMContentLoaded', () => {
+    // ... (rest of your DOMContentLoaded logic) ...
+    
+    // Add close listener for the new modal
+    const modal = document.getElementById('success-modal');
+    const closeBtn = document.getElementById('close-modal-btn');
+    
+    if (closeBtn && modal) {
+        closeBtn.addEventListener('click', () => {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex'); // Remove flex class to hide it properly
+        });
+    }
+});
 
 // Handle service card clicks to auto-fill form
 function setupServiceCardListeners() {
