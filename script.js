@@ -106,6 +106,15 @@ window.handleFormSubmit = async function (event) {
   // 🎯 FIX 1: Define the form element
   const form = event.target;
 
+    const consentCheckbox = document.getElementById("consentCheckbox");
+  if (!consentCheckbox.checked) {
+    statusMessage.textContent = "⚠️ Please agree to the consent before submitting.";
+    statusMessage.classList.remove("hidden", "text-green-600");
+    statusMessage.classList.add("text-red-600");
+    return;
+  }
+
+
   // Ensure you have elements for these messages in your HTML (e.g., <p id="status-message">)
   const statusMessage = document.getElementById("status-message");
   const submitBtn = document.getElementById("submit-btn");
@@ -116,16 +125,6 @@ window.handleFormSubmit = async function (event) {
     statusMessage.classList.remove("hidden", "text-green-600");
     statusMessage.classList.add("text-red-600");
     return;
-  }
-
-  if (!db || !userId) {
-    statusMessage.textContent = "Database not ready. Please wait a moment.";
-    statusMessage.classList.remove("hidden", "text-green-600", "text-red-600");
-    statusMessage.classList.add("text-yellow-600");
-    // Continue submission if it's ONLY for the sheet, but warn the user.
-    console.warn(
-      "Firebase DB or User ID not ready, proceeding to Sheet submission only."
-    );
   }
 
   // Prepare the payload from ALL form fields using their 'name' attributes
