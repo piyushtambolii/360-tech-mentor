@@ -14,7 +14,7 @@ body {
     background-size: cover;
     background-position: center;
     overflow: hidden;
-    min-height: 100vh;
+    min-height: 50vh;
 }
 
 /* Replace Tailwind-only @apply with equivalent plain CSS so this works in-browser */
