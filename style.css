@@ -215,6 +215,51 @@ footer { background: linear-gradient(180deg,#0f172a, #111827); }
 .btn-arattai { background:#0057B8; color:#fff }
 .btn-arattai-alert { background:#FFB020; color:#111 }
 
+        /* Keyframes for a subtle, periodic hop movement */
+        @keyframes whatsapp-hop {
+            0%, 40%, 100% {
+                transform: translateY(0) scale(1);
+                /* Default shadow */
+                
+            }
+            5%, 25% { /* Quick hop up and slight scale */
+                transform: translateY(-5px) scale(1.03);
+                /* Lifted shadow */
+                
+            }
+            10%, 30% {
+                 transform: translateY(0) scale(1);
+            }
+        }
+
+        /* 1. Styling for the Floating WhatsApp Button (With 3D Effect) */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 30px;
+            right: 30px;
+             /* WhatsApp Green */
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            transition: all 0.2s ease;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* Apply the new animation, repeating every 3 seconds */
+            animation: whatsapp-hop 3s ease-in-out infinite;
+        }
+        .whatsapp-float:hover {
+             /* Slightly darker green on hover */
+            transform: translateY(-5px); /* Slight lift */
+            /* Shadow deepens slightly on hover */
+            
+            animation-play-state: paused; /* Pause animation on hover for better interaction */
+        }
+
 /* New connect cards layout */
 .connect-cards {
     display: grid;
