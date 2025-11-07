@@ -231,7 +231,6 @@ footer { background: linear-gradient(180deg,#0f172a, #111827); }
                  transform: translateY(0) scale(1);
             }
         }
-
         /* 1. Styling for the Floating WhatsApp Button (With 3D Effect) */
         .whatsapp-float {
             position: fixed;
