@@ -486,18 +486,16 @@
     <div class="w-full max-w-xs mx-auto">
       <div class="relative" style="padding-top: 177.77%;"> 
         <iframe 
-          id="motive-video-iframe" 
-          src=""
-          data-src="https://www.youtube.com/embed/GM0THIZRqKY?controls=1&autoplay=1&modestbranding=1&rel=0"
+          src="https://www.youtube.com/embed/GM0THIZRqKY?controls=1&autoplay=0&modestbranding=1&rel=0"
           frameborder="0" 
-          allow="autoplay; encrypted-media; gyroscope; picture-in-picture;" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
           allowfullscreen
           class="absolute top-0 left-0 w-full h-full rounded-lg border border-gray-200 shadow-xl">
         </iframe>
       </div>
     </div>
   </div>
-</div>
+        </div>
       </div>
     </div>
   </section>
@@ -825,41 +823,6 @@
     <img src="/WhatsApp.svg.webp" alt="WhatsApp Logo">
   </a>
   <!-- Module script -->
-   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-    const videoIframe = document.getElementById('motive-video-iframe');
-
-    // Only proceed if the iframe exists
-    if (!videoIframe) return;
-
-    // The function that runs when the video comes into view
-    const observerCallback = (entries, observer) => {
-        entries.forEach(entry => {
-            // Check if the element is currently visible (intersecting)
-            if (entry.isIntersecting) {
-                // Get the autoplay URL from the data-src attribute
-                const autoplaySrc = videoIframe.getAttribute('data-src');
-                
-                // Set the src attribute to start loading and playing the video
-                videoIframe.src = autoplaySrc;
-
-                // Stop observing the video once it has been loaded
-                observer.unobserve(videoIframe);
-            }
-        });
-    };
-
-    // Create the Intersection Observer instance
-    const observer = new IntersectionObserver(observerCallback, {
-        root: null, // Use the viewport as the container
-        rootMargin: '0px',
-        threshold: 0.5 // Trigger the callback when 50% of the element is visible
-    });
-
-    // Start observing the video iframe element
-    observer.observe(videoIframe);
-});
-   </script>
   <script>
     /**
  * Handles the countdown timer and current date display for the upcoming webinar.
