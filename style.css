@@ -262,9 +262,10 @@ footer { background: linear-gradient(180deg,#0f172a, #111827); }
 /* New connect cards layout */
 .connect-cards {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 1.25rem;
     align-items: stretch;
+    justify-items: center; /* Center single card */
 }
 .connect-card {
     background: #ffffff;
